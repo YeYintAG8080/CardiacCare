@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor 
+	license agreements. See the NOTICE file distributed with this work for additional 
+	information regarding copyright ownership. The ASF licenses this file to 
+	You under the Apache License, Version 2.0 (the "License"); you may not use 
+	this file except in compliance with the License. You may obtain a copy of 
+	the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. -->
+
+<!DOCTYPE form-validation PUBLIC
+     "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+     "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+
+	<!-- This is a minimal Validator form file with a couple of examples. -->
+
+	<global>
+
+		<!-- An example global constant <constant> <constant-name>postalCode</constant-name> 
+			<constant-value>^\d{5}\d*$</constant-value> </constant> end example -->
+
+	</global>
+
+	<formset>
+	
+		<form name="AdminFormBean">
+
+			<field property="frmLoginPassword" depends="required,maxlength,minlength">
+				<arg key="Password" resource="false" position="0" />
+				<arg key="${var:maxlength}" resource="false" position="1"
+					name="maxlength" />
+				<arg key="${var:minlength}" resource="false" position="1"
+					name="minlength" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>8</var-value>
+				</var>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>
+
+			<field property="frmLoginEmail" depends="required,email">
+				<arg key="Email" resource="false" />
+			</field>
+
+		</form>
+
+		<!-- DoctorRegister -->
+		<form name="DoctorRegisterFormBean">
+			<!-- <field property="regDoctorPhone" depends="required,mask">
+				<arg key="Phone" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0]\d{1,2}-\d{5,11}$</var-value>
+				</var>
+			</field> -->
+			<field property="regDoctorName" depends="required">
+				<arg key="Name" resource="false" />
+			</field>
+			<field property="regDoctorDOB" depends="required,mask">
+				<arg position="0" key="Date" resource="false" />  <!-- key="label.CalendarForm.regPatientDOB" --> 
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^\d{4}-\d{2}-\d{2}$</var-value>
+				</var>
+			</field>
+			<field property="regDoctorEmail" depends="required,email">
+				<arg key="Email" resource="false" />
+			</field>
+			<!-- <field property="regDoctorAddress" depends="required">
+				<arg key="Address" resource="false" />
+			</field>
+			<field property="regDoctorExperience" depends="required">
+				<arg key="Doctor's Experience" resource="false" />
+			</field> -->
+		<!-- 	<field property="regDoctorShift" depends="required">
+				<arg key="Doctor's Duty Shift" resource="false" />
+			</field> -->
+			<!-- <field property="regDoctorDegree" depends="required">
+				<arg key="Doctor's Degree" resource="false" />
+			</field> -->
+		</form>
+	
+		<!-- PatientRegister -->
+		<form name="PatientRegisterFormBean">
+
+			<field property="regPatientPhnoe" depends="required,mask">
+				<arg key="Phone" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0]\d{1,2}-\d{5,11}$</var-value>
+				</var>
+			</field>
+			<field property="regPatientName" depends="required">
+				<arg key="Name" resource="false" />
+			</field>
+			<field property="regPatientDOB" depends="required,mask">
+				<arg position="0" key="label.CalendarForm.regPatientDOB" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^\d{4}-\d{2}-\d{2}$</var-value>
+				</var>
+			</field>
+			<field property="regPatientEmail" depends="required,email">
+				<arg key="Email" resource="false" />
+			</field>
+			<field property="regPatinetAddress" depends="required">
+				<arg key="Address" resource="false" />
+			</field>
+			<field property="regPatientDisease" depends="required">
+				<arg key="Patient's Disease" resource="false" />
+			</field>
+			<field property="regPatientWeight" depends="required">
+				<arg key="Patient's Weight" resource="false" />
+			</field>
+
+		</form>
+
+		<form name="PatientProfileUpdateFormBean">
+			<field property="frmUpdatePhone" depends="required,mask">
+				<arg key="Phone" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0]\d{1,2}-\d{5,11}$</var-value>
+				</var>
+			</field>
+			<field property="frmUpdateAddress" depends="required">
+				<arg key="Address" resource="false" />
+			</field>
+			<field property="frmUpdateWeight" depends="required,mask">
+				<arg key="Patient's Weight" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^\d{2,3}$</var-value>
+				</var>
+			</field>
+		</form>
+
+		
+		<form name="DoctorProfileFillFormBean">
+			<field property="frmProfileFillDegree" depends="required">
+				<arg key="Degree" resource="false" />
+			</field>
+			
+			<field property="frmProfileFillExperience" depends="required">
+				<arg key="Experience" resource="false" />
+			</field>
+			
+			<field property="frmProfileFillPhone" depends="required,mask">
+				<arg key="Phone no" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0]\d{1,2}-\d{5,11}$</var-value>
+				</var>
+			</field>
+			<field property="frmProfileFillAddress" depends="required">
+				<arg key="Address" resource="false" />
+			</field>
+			
+			<field property="frmProfileFillBiography" depends="required">
+				<arg key="Biography" resource="false" />
+			</field>
+		</form>
+
+		<form name="ReceptionistFormBean">
+
+			<field property="frmRepLoginPassword" depends="required,maxlength,minlength">
+				<arg key="Password" resource="false" position="0" />
+				<arg key="${var:maxlength}" resource="false" position="1"
+					name="maxlength" />
+				<arg key="${var:minlength}" resource="false" position="1"
+					name="minlength" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>11</var-value>
+				</var>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>
+
+			<field property="frmRepLoginEmail" depends="required,email">
+				<arg key="Email" resource="false" />
+			</field>
+		</form>
+
+		<form name="NurseFormBean">
+
+			<field property="frmLoginPassword" depends="required,maxlength,minlength">
+				<arg key="Password" resource="false" position="0" />
+				<arg key="${var:maxlength}" resource="false" position="1"
+					name="maxlength" />
+				<arg key="${var:minlength}" resource="false" position="1"
+					name="minlength" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>11</var-value>
+				</var>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>
+
+			<field property="frmLoginEmail" depends="required,email">
+				<arg key="Email" resource="false" />
+			</field>
+		</form>
+
+		<form name="DoctorFormBean">
+
+			<field property="frmLoginPassword" depends="required,maxlength,minlength">
+				<arg key="Password" resource="false" position="0" />
+				<arg key="${var:maxlength}" resource="false" position="1"
+					name="maxlength" />
+				<arg key="${var:minlength}" resource="false" position="1"
+					name="minlength" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>11</var-value>
+				</var>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>
+
+			<field property="frmLoginEmail" depends="required,email">
+				<arg key="Email" resource="false" />
+			</field>
+		</form>
+
+		<form name="PatientFormBean">
+
+			<field property="frmLoginPassword" depends="required,maxlength,minlength">
+				<arg key="Password" resource="false" position="0" />
+				<arg key="${var:maxlength}" resource="false" position="1"
+					name="maxlength" />
+				<arg key="${var:minlength}" resource="false" position="1"
+					name="minlength" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>11</var-value>
+				</var>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>
+
+			<field property="frmLoginEmail" depends="required,email">
+				<arg key="Email" resource="false" />
+			</field>
+		</form>
+
+		<form name="DoctorPatientSearchFormBean">
+
+			<field property="frmPatientRegisterId" depends="required">
+				<arg key="Registeration Id" resource="false" />
+			</field>
+		</form>
+
+		<form name="PatientFeedbackFormBean">
+
+			<field property="frmPatientFeedback" depends="required">
+				<arg key="Feedback" resource="false" />
+			</field>
+		</form>
+
+
+		<form name="DoctorProfileUpdateFormBean">
+
+			<field property="frmPassword" depends="required,maxlength,minlength">
+				<arg key="Password" resource="false" position="0" />
+				<arg key="${var:maxlength}" resource="false" position="1"
+					name="maxlength" />
+				<arg key="${var:minlength}" resource="false" position="1"
+					name="minlength" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>11</var-value>
+				</var>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>
+
+			<field property="frmEmail" depends="required,email">
+				<arg key="Email" resource="false" />
+			</field>
+
+			<field property="frmDegree" depends="required">
+				<arg key="Degree" resource="false" />
+			</field>
+
+			<field property="frmSpecialization" depends="required">
+				<arg key="Specialization" resource="false" />
+			</field>
+
+			<field property="frmExperience" depends="required">
+				<arg key="Experience" resource="false" />
+			</field>
+
+			<field property="frmPhone" depends="required">
+				<arg key="Phone" resource="false" />
+			</field>
+
+			<field property="frmAddress" depends="required">
+				<arg key="Address" resource="false" />
+			</field>
+		</form>
+
+
+		<form name="NurseCreateRecordFormBean">
+			<field property="frmBloodPresure" depends="required,mask">
+				<arg key="Blood preasure" resource="false" position="0" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^\d{2,3}-\d{2,3}$</var-value>
+				</var>
+			</field>
+			<field property="frmSpO2Level" depends="required">
+				<arg key="Sp02 level" resource="false" position="0" />
+			</field>
+			<field property="frmBodyTemperature" depends="required">
+				<arg key="Body temperature" resource="false" position="0" />
+			</field>
+			<field property="frmDiabetes" depends="required">
+				<arg key="Diabetes" resource="false" position="0" />
+			</field>
+			<field property="frmPulseRate" depends="required">
+				<arg key="Pulse rate" resource="false" position="0" />
+			</field>
+		</form>
+
+	</formset>
+
+</form-validation>

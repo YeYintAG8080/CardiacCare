@@ -1,0 +1,252 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Patient Discharge</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="../css/bootstrap-css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="../css/panel-css/style.css">
+
+    <link rel="stylesheet" href="../css/panel-css/panel.css">
+     <link rel="stylesheet" href="../css/receptionist-css/receptionist-style.css">
+  </head>
+  <body >
+    
+    <div class="wrapper d-flex align-items-stretch">
+  
+      <nav id="sidebar" class="bg-info" >
+  
+        <div id="inner-sidebar" class="p-4 pt-5">
+          <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../panel-images/Receptionist.png);"></a>
+          <ul class="list-unstyled components mb-5">
+            <li>
+                <a href="./ReceptionistHomePage.html">Receptionist Home</a>
+            </li>
+            <li>
+                <a href="./CheckRegisterPage.html">Patient Register</a>
+            </li>
+            
+          </ul>
+
+         <div class="footer">
+            <p style="color:white;"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Team 2, Software Engineering 26th Batch, ICTTI.
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+
+
+        </div>
+  
+      </nav>
+   
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5">
+
+
+
+        <nav class="navbar navbar-expand-lg  bg-info position-sticky sticky-top">
+          <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../aboutus.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../doctorinfo.html">Doctor Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../contactus.html">Contact Us</a>
+                </li>
+    
+    <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav><!--content nav bar -->
+  <!-- Date  -->
+         <table class="table">
+    <tr>
+        <td>
+        <h5 id="date-label"></h5>
+        </td>
+        <td>
+        <form class="form-inline float-right">
+            <label class="sr-only">Name</label>
+            <input type="text" class="form-control mb-2 mr-sm-2">
+            <button type="submit" class="btn btn-info mb-2">Search</button>
+        </form>
+        </td>
+  </table>
+
+
+  <!-- CUSTOMIZE START HERE -->
+
+  <div class="container">
+
+  <table class="table table-hover table-striped">
+    <thead class="table-primary">
+      <tr>
+        <th>No</th>
+        <th>Patient</th>
+        <th>Date Of Birth</th>
+  <th>Address</th>
+  <th>Phone No</th>
+  <th>Admitted Date</th>
+  <th>Discharged Date</th>
+  <th></th>
+      </tr>
+    </thread>
+    <tbody>
+      <tr class="table-info">
+        <td>1</td>
+        <td>U Aung Kyaw Myint</td>
+        <td>12/22/1980</td>
+        <td>Kamayut,Yangon</td>
+        <td>0925....</td>
+        <td>1/25/2020</td>
+        <td>2/28/2020</td>
+   <td><button type="button" class="btn btn-info" disabled = "disabled">Discharge</button></td>
+  </tr>
+
+     <tr class="table-primary">
+        <td>2</td>
+        <td>Mg Mg</td>
+        <td>12/23/2000</td>
+        <td>Kamayut,Yangon</td>
+        <td>0925....</td>
+        <td>1/21/2020</td>
+        <td>2/21/2020</td>
+   <td><button type="button" class="btn btn-info" disabled = "disabled">Discharge</button></td>
+  </tr>
+
+    <tbody>
+      <tr class="table-info">
+         <td>3</td>
+        <td>Aung Aung</td>
+        <td>12/04/2000</td>
+        <td>Kamayut,Yangon</td>
+        <td>0925....</td>
+        <td>1/20/2020</td>
+        <td>2/23/2020</td>
+   <td><button type="button" class="btn btn-info" disabled = "disabled">Discharge</button></td>
+  </tr>
+
+
+      <tr class="table-primary">
+         <td>4</td>
+        <td>Hnin Hnin</td>
+        <td>12/24/2000</td>
+        <td>Kamayut,Yangon</td>
+        <td>0925....</td>
+        <td>1/16/2020</td>
+        <td>2/20/2020</td>
+   <td><button type="button" class="btn btn-info" disabled = "disabled">Discharge</button></td>
+  </tr>
+
+      <tr class="table-info">
+        <td>5</td>
+        <td>Aye Aye</td>
+        <td>12/25/2000</td>
+        <td>Kamayut,Yangon</td>
+        <td>0925....</td>
+        <td>1/20/2020</td>
+        <td>2/19/2020</td>
+    <td><button type="button" class="btn btn-info" disabled = "disabled">Discharge</button></td>
+  </tr>
+
+      <tr class="table-primary">
+        <td>6</td>
+        <td>U Ba</td>
+        <td>12/26/2000</td>
+        <td>Kamayut,Yangon</td>
+        <td>0925....</td>
+        <td>1/16/2020</td>
+        <td>2/25/2020</td>
+  <td><button type="button" class="btn btn-info" disabled = "disabled">Discharge</button></td>
+  </tr>
+
+      <tr class="table-info">
+        <td>7</td>
+        <td>U Hla</td>
+        <td>12/27/2000</td>
+        <td>Kamayut,Yangon</td>
+        <td>0925....</td>
+        <td>1/17/2020</td>
+        <td>2/28/2020</td>
+   <td><button type="button" class="btn btn-info" disabled = "disabled">Discharge</button></td>
+  </tr>
+
+      <tr class="table-primary">
+        <td>8</td>
+        <td>Daw Mya</td>
+        <td>12/28/2000</td>
+        <td>Kamayut,Yangon</td>
+        <td>0925....</td>
+        <td>1/20/2020</td>
+        <td>2/28/2020</td>
+   <td><button type="button" class="btn btn-info" disabled = "disabled">Discharge</button></td>
+  </tr>
+
+      <tr class="table-info">
+         <td>9</td>
+        <td>Daw Chue</td>
+        <td>12/29/2000</td>
+        <td>Kamayut,Yangon</td>
+        <td>0925....</td>
+        <td>1/18/2020</td>
+        <td>2/28/2020</td>
+   <td><button type="button" class="btn btn-info" disabled = "disabled">Discharge</button></td>
+  </tr>
+
+      <tr class="table-primary">
+         <td>10</td>
+        <td>U Aung</td>
+        <td>12/30/2000</td>
+        <td>Kamayut,Yangon</td>
+        <td>0925....</td>
+        <td>1/22/2020</td>
+        <td>2/28/2020</td>
+  <td><button type="button" class="btn btn-info" disabled = "disabled">Discharge</button></td>
+  </tr>
+
+
+
+     </tbody>
+     </table>
+  </div>
+</div>
+        <!-- CUSTOMIZE END HERE -->
+      </div>
+    </div>
+
+     <script src="../js/bootstrap-js/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../js/bootstrap-js/jquery/popper.min.js"></script>
+    <script src="../js/bootstrap-js/bootstrap.min.js"></script> 
+    <script src="../js/panel-js/main.js"></script>
+    <!-- other additional function for health care project (start)-->
+    <script src="../js/panel-js/other-function.js"></script>
+
+
+    <!-- other additional function for health care project (end)-->
+  </body>
+</html>

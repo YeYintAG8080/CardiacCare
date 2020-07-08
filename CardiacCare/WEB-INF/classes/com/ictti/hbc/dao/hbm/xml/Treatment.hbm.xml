@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.ictti.hbc.business.entity">
+	<class
+		name="Treatment"
+		table="treatment"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="TREATMENT_ID"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="treatmentDate"
+			column="TREATMENT_DATE"
+			type="date"
+			not-null="true"
+			length="10"
+		/>
+		<property
+			name="suggestion"
+			column="SUGGESTION"
+			type="string"
+			not-null="false"
+			length="200"
+		/>
+		<many-to-one
+			name="dailyRecord"
+			column="DAILY_RECORD_ID"
+			class="DailyRecord"
+			not-null="true"
+		>
+		</many-to-one>
+		<many-to-one
+			name="doctor"
+			column="DOCTOR_ID"
+			class="Doctor"
+			not-null="true"
+		>
+		</many-to-one>
+	
+
+		<set name="injectionDoses" inverse="true">
+			<key column="TREATMENT_ID"/>
+			<one-to-many class="InjectionDose"/>
+		</set>
+
+		<set name="medicines" inverse="true">
+			<key column="TREATMENT_ID"/>
+			<one-to-many class="Medicine"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

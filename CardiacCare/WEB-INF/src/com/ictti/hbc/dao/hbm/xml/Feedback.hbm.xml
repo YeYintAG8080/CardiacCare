@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.ictti.hbc.business.entity">
+	<class
+		name="Feedback"
+		table="feedback"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="FEEDBACK_ID"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="feedback"
+			column="FEEDBACK"
+			type="string"
+			not-null="true"
+			length="1000"
+		/>
+		<property
+			name="feedbackDate"
+			column="FEEDBACK_DATE"
+			type="date"
+			not-null="true"
+			length="10"
+		/>
+		<property
+			name="feedbackTimestamp"
+			column="FEEDBACK_TIMESTAMP"
+			type="time"
+			not-null="true"
+			length="8"
+		/>
+		<many-to-one
+			name="patient"
+			column="PATIENT_ID"
+			class="Patient"
+			not-null="true"
+		>
+		</many-to-one>
+
+
+	</class>	
+</hibernate-mapping>

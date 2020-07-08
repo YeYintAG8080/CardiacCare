@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- Client System : Start Here -->
+	<bean name="/index" class="com.ictti.hbc.presentation.action.IndexAction">
+	</bean>
+
+	<bean name="/aboutus" class="com.ictti.hbc.presentation.action.AboutUsAction">
+	</bean>
+
+	<bean name="/doctorinfo" class="com.ictti.hbc.presentation.action.DoctorTeamAction">
+		<property name="myDoctorService" ref="idDoctorService" />
+	</bean>
+	
+	<bean name="/DoctorInfoDetail" class="com.ictti.hbc.presentation.action.DoctorDetailAction">
+		<property name="myDoctorService" ref="idDoctorService" />
+	</bean>
+
+	<bean name="/contactus" class="com.ictti.hbc.presentation.action.ContactUsAction">
+	</bean>
+
+	<!-- Client System : End Here -->
+
+	<bean name="/logoutPath" class="com.ictti.hbc.presentation.action.LogoutAction">
+	</bean>
+	<!-- Logout Action -->
+
+	<!-- Admin Subsystem : Start Here -->
+	<bean name="/AdminLogin" class="com.ictti.hbc.presentation.action.AdminLoginAction">
+	</bean>
+
+	<bean name="/AdminLoginPath" class="com.ictti.hbc.presentation.action.AdminLoginAction">
+		<property name="myAdminService" ref="idAdminService" />
+		<property name="myAdminPatientListService" ref="idAdminPatientListService" />
+	</bean>
+
+	<bean name="/AdminLogoutPath" class="com.ictti.hbc.presentation.action.AdminLogoutAction">
+	</bean>
+
+	<bean name="/AdminPatientList"
+		class="com.ictti.hbc.presentation.action.AdminPatientListAction">
+		<property name="myAdminPatientListService" ref="idAdminPatientListService" />
+
+	</bean>
+
+	<bean name="/AdminPatientFeedback"
+		class="com.ictti.hbc.presentation.action.AdminPatientFeedbackAction">
+		<property name="myAdminPatientFeedbackService" ref="idAdminPatientFeedbackService" />
+	</bean>
+
+	<bean name="/AdminHomePath" class="com.ictti.hbc.presentation.action.AdminHomeAction">
+	</bean>
+
+	<bean name="/AdminDoctorRegistrationFirst "
+		class="com.ictti.hbc.presentation.action.AdminDoctorRegistrationAction">
+	</bean>
+
+	<!-- RegisterPath -->
+	<bean name="/AdminDoctorRegistration "
+		class="com.ictti.hbc.presentation.action.AdminDoctorRegistrationAction">
+		<property name="myAdminDoctorService" ref="idAdminDoctorService" />
+		<property name="myAdminService" ref="idAdminService"></property>
+	</bean>
+
+	<!-- Search Feedback -->
+	<bean name="/feedbackSearch"
+		class="com.ictti.hbc.presentation.action.SearchFeedbackDateAction">
+		<property name="myAdminPatientFeedbackService" ref="idAdminPatientFeedbackService" />
+		<!-- <property name="myDailyRecordService" ref="idDailyRecordService" /> -->
+	</bean>
+	
+	<!-- Admin Sub System: End Here -->
+
+	<!-- Nurse Subsystem : Start Here -->
+	<bean name="/NurseLogin" class="com.ictti.hbc.presentation.action.NurseLoginAction">
+	</bean>
+
+	<bean name="/NurseLoginPath" class="com.ictti.hbc.presentation.action.NurseLoginAction">
+		<property name="myNurseService" ref="idNurseService" />
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<bean name="/NurseHomePage" class="com.ictti.hbc.presentation.action.NurseHomeAction">
+		<property name="myPatientService" ref="idPatientService" />
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+	</bean>
+
+	<bean name="/MedicalRecordDetailLoadLink" class="com.ictti.hbc.presentation.action.DailyRecordAction">
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+	</bean>
+	<bean name="/MedicalRecordCreateFormLoadLink" class="com.ictti.hbc.presentation.action.DailyRecordAction">
+	</bean>
+
+	<bean name="/DailyRecordCreatePageCancelLink" class="com.ictti.hbc.presentation.action.NurseHomeAction">
+		<property name="myPatientService" ref="idPatientService" />
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+	</bean>
+
+	<bean name="/DailyRecordConfirmPageCancelLink" class="com.ictti.hbc.presentation.action.DailyRecordAction">
+	</bean>
+
+	<bean name="/DailyRecordSavePath" class="com.ictti.hbc.presentation.action.DailyRecordAction">
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<bean name="/TreatmentPageLoadLink"
+		class="com.ictti.hbc.presentation.action.NurseTreatmentViewAction">
+		<property name="myTreatmentService" ref="idTreatmentService" />
+		<property name="myMedicineService" ref="idMedicineService" />
+		<property name="myInjectionDoseService" ref="idInjectionDoseService" />
+	</bean>
+
+	<bean name="/FileDownloadLink" class="com.ictti.hbc.presentation.action.FileDownloadAction">
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<bean name="/ToDoListPage" class="com.ictti.hbc.presentation.action.ToDoListPageAction">
+		<property name="myInjectionDoseService" ref="idInjectionDoseService" />
+		<property name="myTreatmentService" ref="idTreatmentService" />
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<bean name="/TaskCompleteAction" class="com.ictti.hbc.presentation.action.ToDoListPageAction">
+		<property name="myInjectionDoseService" ref="idInjectionDoseService" />
+		<property name="myTreatmentService" ref="idTreatmentService" />
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<!-- Doctor Subsystem : Start Here -->
+
+	<bean name="/DoctorLogin" class="com.ictti.hbc.presentation.action.DoctorLoginAction">
+	</bean>
+
+	<bean name="/DoctorLoginPath" class="com.ictti.hbc.presentation.action.DoctorLoginAction">
+		<property name="myDoctorService" ref="idDoctorService" />
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+	
+	<bean name="/DoctorProfileFillAction" class="com.ictti.hbc.presentation.action.DoctorProfileFillAction">
+		<property name="myDoctorService" ref="idDoctorService" />
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+	
+	<bean name="/DoctorProfileFillCancel" class="com.ictti.hbc.presentation.action.DoctorProfileFillAction">
+		<property name="myDoctorService" ref="idDoctorService" />
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<bean name="/DoctorPatientListPage" class="com.ictti.hbc.presentation.action.DoctorHomeAction">
+		<property name="myPatientService" ref="idPatientService" />
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+	</bean>
+
+	<bean name="/DoctorMedicalRecordDetailLoadLink"
+		class="com.ictti.hbc.presentation.action.DoctorMedicalRecordAction">
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+		<property name="myTreatmentService" ref="idTreatmentService" />
+	</bean>
+
+	<bean name="/DoctorTreatmentPageLoadLink"
+		class="com.ictti.hbc.presentation.action.DoctorTreatmentAction">
+		<property name="myTreatmentService" ref="idTreatmentService" />
+		<property name="myInjectionDoseService" ref="idInjectionDoseService" />
+		<property name="myMedicineService" ref="idMedicineService" />
+	</bean>
+
+	<bean name="/AddMedicationTreatment"
+		class="com.ictti.hbc.presentation.action.DoctorPatientSearchAction">
+	</bean>
+
+	<bean name="/PatientSearchAction"
+		class="com.ictti.hbc.presentation.action.DoctorPatientSearchAction">
+		<property name="myPatientService" ref="idPatientService" />
+		<property name="myTreatmentService" ref="idTreatmentService" />
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+	</bean>
+
+	<bean name="/AddTreatmentLink"
+		class="com.ictti.hbc.presentation.action.DoctorAddTreatmentAction">
+	</bean>
+
+	<bean name="/AddTreatmentAction"
+		class="com.ictti.hbc.presentation.action.DoctorAddTreatmentAction">
+		<property name="myTreatmentService" ref="idTreatmentService" />
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+		<property name="myInjectionDoseService" ref="idInjectionDoseService" />
+		<property name="myMedicineService" ref="idMedicineService" />
+	</bean>
+
+	<bean name="/UpdateDoctorProfile" class="com.ictti.hbc.presentation.action.DoctorUpdateAction">
+		<property name="myDoctorService" ref="idDoctorService" />
+	</bean>
+
+	<bean name="/UpdateDoctorProfileAction" class="com.ictti.hbc.presentation.action.DoctorUpdateAction">
+		<property name="myDoctorService" ref="idDoctorService" />
+	</bean>
+
+	<!-- Doctor Subsystem : End Here -->
+
+	<!-- Patient Subsystem : Start Here -->
+
+	<bean name="/PatientLogin" class="com.ictti.hbc.presentation.action.PatientLoginAction">
+	</bean>
+
+	<bean name="/PatientLoginPath" class="com.ictti.hbc.presentation.action.PatientLoginAction">
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<bean name="/PatientProfile"
+		class="com.ictti.hbc.presentation.action.PatientProfileAction">
+	</bean>
+
+	<bean name="/DailyMedicalRecord"
+		class="com.ictti.hbc.presentation.action.PatientDailyMedicalRecordAction">
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+		<property name="myTreatmentService" ref="idTreatmentService" />
+	</bean>
+
+	<bean name="/MedicalRecordHistory"
+		class="com.ictti.hbc.presentation.action.PatientMedicalRecordHistoryAction">
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+	</bean>
+
+	<bean name="/DailyTreatment"
+		class="com.ictti.hbc.presentation.action.PatientTreatmentViewAction">
+		<property name="myTreatmentService" ref="idTreatmentService" />
+		<property name="myMedicineService" ref="idMedicineService" />
+		<property name="myInjectionDoseService" ref="idInjectionDoseService" />
+		<property name="myDailyRecordService" ref="idDailyRecordService" />	
+	</bean>
+
+	<bean name="/DoctorSuggestion"
+		class="com.ictti.hbc.presentation.action.PatientDoctorSuggestionViewAction">
+		<property name="myDailyRecordService" ref="idDailyRecordService" />
+		<property name="myTreatmentService" ref="idTreatmentService" />
+	</bean>
+
+	<bean name="/PatientFeedback"
+		class="com.ictti.hbc.presentation.action.PatientFeedbackAction">
+	</bean>
+
+	<bean name="/PatientFeedbackAction"
+		class="com.ictti.hbc.presentation.action.PatientFeedbackAction">
+		<property name="myPatientService" ref="idPatientService" />
+		<property name="myFeedbackService" ref="idFeedbackService" />
+	</bean>
+	
+	<bean name="/UpdatePatientProfile"
+		class="com.ictti.hbc.presentation.action.PatientProfileUpdateAction">
+	</bean>
+	
+	<bean name="/UpdatePatientProfileAction"
+		class="com.ictti.hbc.presentation.action.PatientProfileUpdateAction">
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<!-- Patient Subsystem : End Here -->
+
+	<!-- Receptionist Subsystem : Start Here -->
+	
+	<bean name="/ReceptionistLogin" class="com.ictti.hbc.presentation.action.ReceptionistLoginAction">
+	</bean>
+
+	 <bean name="/ReceptionistLoginPath" class="com.ictti.hbc.presentation.action.ReceptionistLoginAction">
+		<property name="myReceptionistService" ref="idReceptionistService" />
+	</bean> 
+
+	<!-- PatientRegisterFirstPath -->
+	<bean name="/PatientRegisterFirstPath"
+		class="com.ictti.hbc.presentation.action.PatientRegisterAction">
+	</bean>
+
+	<!-- PatientRegisterPath -->
+	<bean name="/PatientRegisterPath"
+		class="com.ictti.hbc.presentation.action.PatientRegisterAction">
+
+		<property name="myReceptionistService" ref="idReceptionistService" />
+
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<!-- PatientUpdate -->
+	<bean name="/PatientUpdate" class="com.ictti.hbc.presentation.action.PatientUpdateAction">
+
+		<property name="myReceptionistService" ref="idReceptionistService" />
+
+
+	</bean>
+
+	<!-- HomePage -->
+	<bean name="/HomePage"
+		class="com.ictti.hbc.presentation.action.ReceptionistHomePageAction">
+		<property name="myReceptionistService" ref="idReceptionistService" />
+	</bean>
+
+	<!-- DischargeDate -->
+	<bean name="/DischargePath" class="com.ictti.hbc.presentation.action.DischargeDateAction">
+		<property name="myReceptionistService" ref="idReceptionistService" />
+	</bean>
+
+	<!-- SearchOldPatient -->
+	<bean name="/SearchOldPatient"
+		class="com.ictti.hbc.presentation.action.SearchOldPatientAction">
+	</bean>
+	<bean name="/SearchPatient"
+		class="com.ictti.hbc.presentation.action.SearchOldPatientAction">
+	</bean>
+
+
+
+	<!-- SearchPatientById -->
+	<bean name="/SearchPatientById"
+		class="com.ictti.hbc.presentation.action.SearchPatientByIdAction">
+		<property name="myReceptionistService" ref="idReceptionistService" />
+	</bean>
+	<!-- Receptionist Subsystem : End Here -->
+</beans>

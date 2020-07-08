@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+
+
+	<bean id="idNurseDao" class="com.ictti.hbc.dao.NurseDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="idPatientDao" class="com.ictti.hbc.dao.PatientDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="idDailyRecordDao" class="com.ictti.hbc.dao.DailyRecordDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="idTreatmentDao" class="com.ictti.hbc.dao.TreatmentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="idMedicineDao" class="com.ictti.hbc.dao.MedicineDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="idInjectionDao" class="com.ictti.hbc.dao.InjectionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="idDoctorDao" class="com.ictti.hbc.dao.DoctorDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="idFeedbackDao" class="com.ictti.hbc.dao.FeedbackDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="idReceptionistDao" class="com.ictti.hbc.dao.ReceptionistDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
+	<!-- Dao Beans for Admin -->
+	<bean id="idAdminDao" class="com.ictti.hbc.dao.AdminDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="idAdminPatientDao" class="com.ictti.hbc.dao.AdminPatientDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="idAdminPatientFeedbackDao" class="com.ictti.hbc.dao.AdminPatientFeedbackDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="idAdminSearchFeedbackDao" class="com.ictti.hbc.dao.AdminSearchFeedbackDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="idAdminDoctorDao" class="com.ictti.hbc.dao.AdminDoctorDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- <bean id="idPatientReportDao" class="com.ictti.hbc.dao.PatientReportDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>  -->
+	
+	
+	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${db.driver}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+	</bean>
+
+
+
+
+	<!-- definition of location of datasource external file -->
+	<bean id="dbConf" class="org.springframework.core.io.ClassPathResource">
+		<constructor-arg>
+			<value>database.properties</value>
+		</constructor-arg>
+	</bean>
+
+
+
+
+	<bean id="databaseConfPostProcessor"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<ref bean="dbConf" />
+		</property>
+	</bean>
+
+	<!-- sessionFactory definition -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>com/ictti/hbc/dao/hbm/xml/Nurse.hbm.xml</value>
+				<value>com/ictti/hbc/dao/hbm/xml/Patient.hbm.xml</value>
+				<value>com/ictti/hbc/dao/hbm/xml/Feedback.hbm.xml</value>
+				<value>com/ictti/hbc/dao/hbm/xml/Admin.hbm.xml</value>
+				<value>com/ictti/hbc/dao/hbm/xml/Doctor.hbm.xml</value>
+				<value>com/ictti/hbc/dao/hbm/xml/InjectionDose.hbm.xml</value>
+				<value>com/ictti/hbc/dao/hbm/xml/Medicine.hbm.xml</value>
+				<value>com/ictti/hbc/dao/hbm/xml/Receptionist.hbm.xml</value>
+				<value>com/ictti/hbc/dao/hbm/xml/Treatment.hbm.xml</value>
+				<value>com/ictti/hbc/dao/hbm/xml/DailyRecord.hbm.xml</value>
+				<!-- <value>com/ictti/hbc/dao/hbm/xml/PatientReport.hbm.xml</value> -->
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLInnoDBDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.0.xsd 
+	http://www.directwebremoting.org/schema/spring-dwr 
+	http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd">
+
+	<bean id="idNurseService" class="com.ictti.hbc.business.service.NurseService">
+		<property name="myNurseDao" ref="idNurseDao" />
+	</bean>
+
+	<bean id="idPatientService" class="com.ictti.hbc.business.service.PatientService">
+		<property name="myPatientDao" ref="idPatientDao" />
+	</bean>
+
+	<bean id="idDailyRecordService" class="com.ictti.hbc.business.service.DailyRecordService">
+		<property name="myDailyRecordDao" ref="idDailyRecordDao" />
+	</bean>
+
+	<bean id="idTreatmentService" class="com.ictti.hbc.business.service.TreatmentService">
+		<property name="myTreatmentDao" ref="idTreatmentDao" />
+	</bean>
+
+	<bean id="idMedicineService" class="com.ictti.hbc.business.service.MedicineService">
+		<property name="myMedicineDao" ref="idMedicineDao" />
+	</bean>
+
+	<bean id="idInjectionDoseService" class="com.ictti.hbc.business.service.InjectionDoseService">
+		<property name="myInjectionDao" ref="idInjectionDao" />
+	</bean>
+
+	<bean id="idDoctorService" class="com.ictti.hbc.business.service.DoctorService">
+		<property name="myDoctorDao" ref="idDoctorDao" />
+	</bean>
+
+	<bean id="idFeedbackService" class="com.ictti.hbc.business.service.FeedbackService">
+		<property name="myFeedbackDao" ref="idFeedbackDao" />
+	</bean>
+
+	<bean id="idReceptionistService" class="com.ictti.hbc.business.service.ReceptionistService">
+		<property name="myReceptionistDao" ref="idReceptionistDao" />
+		<property name="myPatientDao" ref="idPatientDao" />
+	</bean>
+ 
+	<bean id="idAdminService" class="com.ictti.hbc.business.service.AdminService">
+		<property name="myAdminDao" ref="idAdminDao" />
+	</bean>
+
+	<bean id="idAdminPatientListService" class="com.ictti.hbc.business.service.AdminPatientListService">
+		<property name="myAdminPatientDao" ref="idAdminPatientDao" />
+	</bean>
+
+	<bean id="idAdminPatientFeedbackService"
+		class="com.ictti.hbc.business.service.AdminPatientFeedbackService">
+		<property name="myAdminPatientFeedbackDao" ref="idAdminPatientFeedbackDao" />
+	</bean>
+
+	<bean id="idAdminDoctorService" class="com.ictti.hbc.business.service.AdminDoctorService">
+		<property name="myAdminDoctorDao" ref="idAdminDoctorDao"></property>
+	</bean>
+
+	<bean id="idFeedbackSearchService" class="com.ictti.hbc.business.service.FeedbackSearchService">
+		<property name="myAdminSearchFeedbackDao" ref="idAdminSearchFeedbackDao"></property>
+	</bean>
+	
+	<!-- <bean id="idPatientReportService" class="com.ictti.hbc.business.service.PatientReportService">
+		<property name="myPatientReportDao" ref="idPatientReportDao"></property>
+	</bean> -->
+	
+</beans>

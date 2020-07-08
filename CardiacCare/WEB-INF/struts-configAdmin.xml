@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+"http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<!-- Form Bean Definitions -->
+	<form-beans>
+ 
+ 		<form-bean name="AdminFormBean" type="com.ictti.hbc.presentation.form.AdminForm" />
+
+		<form-bean name="DoctorRegisterFormBean" type="com.ictti.hbc.presentation.form.AdminForm" />
+
+	</form-beans>
+	<!-- Action Mapping Definitions -->
+	<action-mappings>
+
+		<action path="/AdminLoginPath" name="AdminFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/AdminSubsystem/AdminLogin.jsp">
+			<forward name="gotoAdminLoginForm" path="/WEB-INF/jsp/AdminSubsystem/AdminLogin.jsp" />
+			<forward name="gotoAdminPatientList"
+				path="/WEB-INF/jsp/AdminSubsystem/AdminPatientList.jsp" />
+		</action>
+
+		<action path="/AdminLogoutPath" name="AdminFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="false">
+			<forward name="gotoAdminLogout" path="/WEB-INF/jsp/index.jsp" />
+
+		</action>
+
+		<action path="/AdminPatientList" name="AdminFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="false">
+			<forward name="gotoAdminPatientList"
+				path="/WEB-INF/jsp/AdminSubsystem/AdminPatientList.jsp" />
+			<forward name="gotoAdminLoginForm" path="/WEB-INF/jsp/AdminSubsystem/AdminLogin.jsp" />
+		</action>
+
+		<action path="/AdminPatientFeedback" name="AdminFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="false">
+			<forward name="gotoAdminLoginForm" path="/WEB-INF/jsp/AdminSubsystem/AdminLogin.jsp" />
+			<forward name="gotoAdminPatientFeedback"
+				path="/WEB-INF/jsp/AdminSubsystem/AdminPatientFeedback.jsp" />
+
+		</action>
+
+		<action path="/AdminHomePath" name="AdminFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="false">
+			<forward name="gotoAdminLoginForm" path="/WEB-INF/jsp/AdminSubsystem/AdminLogin.jsp" />
+			<forward name="gotoAdminHome" path="/WEB-INF/jsp/AdminSubsystem/AdminHome.jsp" />
+
+		</action>
+
+		<action path="/AdminDoctorRegistrationFirst" name="AdminFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="false">
+			<forward name="gotoAdminLoginForm" path="/WEB-INF/jsp/AdminSubsystem/AdminLogin.jsp" />
+			<forward name="gotoDoctorRegistrationFirst"
+				path="/WEB-INF/jsp/AdminSubsystem/AdminDoctorRegistration.jsp" />
+
+		</action>
+
+		<action path="/AdminDoctorRegistration" name="DoctorRegisterFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="true" input="/WEB-INF/jsp/AdminSubsystem/AdminDoctorRegistration.jsp">
+			<forward name="gotoDoctorRegistration"
+				path="/WEB-INF/jsp/AdminSubsystem/AdminDoctorRegistration.jsp" />
+			<forward name="gotoAdminHome" path="/WEB-INF/jsp/AdminSubsystem/AdminHome.jsp" />
+			<forward name="gotoAdminLoginForm" path="/WEB-INF/jsp/AdminSubsystem/AdminLogin.jsp" />
+			<forward name="gotoDoctorRegistrationFirst" path="/WEB-INF/jsp/AdminSubsystem/AdminDoctorRegistration.jsp" />
+		</action>
+		
+		<!-- <action path="/feedbackSearch" name="AdminFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="false">
+
+			<forward name="gotoFeedbackSearch"
+				path="/WEB-INF/jsp/AdminSubsystem/AdminFeedbackSearch.jsp" />
+			<forward name="gotoFeedbackSearchResult"
+				path="/WEB-INF/jsp/AdminSubsystem/FeedbackResult.jsp" />
+
+		</action> -->
+		
+		<!-- SearchFeedbackListByDate -->
+		<action path="/feedbackSearch" name="AdminFormBean"
+			type="org.springframework.web.struts.DelegatingActionProxy" scope="session"
+			validate="false">
+			<forward name="gotoAdminLoginForm" path="/WEB-INF/jsp/AdminSubsystem/AdminLogin.jsp" />
+			<forward name="gotoSearchFeedbackList"
+				path="/WEB-INF/jsp/AdminSubsystem/AdminFeedbackSearch.jsp" />
+			<forward name="gotoEmpty"
+				path="/WEB-INF/jsp/AdminSubsystem/EmptyFeedbackResult.jsp" />
+
+		</action>
+
+	</action-mappings>
+
+	<message-resources parameter="java.MessageResources" />
+
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+			value="/WEB-INF/action-servletAction.xml,/WEB-INF/action-servletService.xml,/WEB-INF/action-servlet.xml" />
+	</plug-in>
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/org/apache/struts/validator/validator-rules.xml,/WEB-INF/validation.xml" />
+	</plug-in>
+</struts-config>

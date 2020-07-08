@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.ictti.hbc.business.entity">
+	<class
+		name="Patient"
+		table="patient"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="PATIENT_ID"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="registerId"
+			column="REGISTER_ID"
+			type="string"
+			not-null="true"
+			length="50"
+		/>
+		<property
+			name="patientName"
+			column="PATIENT_NAME"
+			type="string"
+			not-null="true"
+			length="30"
+		/>
+		<property
+			name="dateOfBirth"
+			column="DATE_OF_BIRTH"
+			type="date"
+			not-null="true"
+			length="10"
+		/>
+		<property
+			name="address"
+			column="ADDRESS"
+			type="string"
+			not-null="true"
+			length="400"
+		/>
+		<property
+			name="phone"
+			column="PHONE"
+			type="string"
+			not-null="true"
+			length="15"
+		/>
+		<property
+			name="diseaseName"
+			column="DISEASE_NAME"
+			type="string"
+			not-null="true"
+			length="100"
+		/>
+		<property
+			name="bloodGroup"
+			column="BLOOD_GROUP"
+			type="string"
+			not-null="true"
+			length="4"
+		/>
+		<property
+			name="gender"
+			column="GENDER"
+			type="string"
+			not-null="true"
+			length="12"
+		/>
+		<property
+			name="weight"
+			column="WEIGHT"
+			type="integer"
+			not-null="true"
+			length="10"
+		/>
+		<property
+			name="admittedDate"
+			column="ADMITTED_DATE"
+			type="date"
+			not-null="true"
+			length="10"
+		/>
+		<property
+			name="dischargedDate"
+			column="DISCHARGED_DATE"
+			type="date"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="updateLabResult"
+			column="UPDATE_LAB_RESULT"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<property
+			name="email"
+			column="EMAIL"
+			type="string"
+			not-null="true"
+			length="45"
+		/>
+		<property
+			name="password"
+			column="PASSWORD"
+			type="string"
+			not-null="true"
+			length="50"
+		/>
+	
+
+		<set name="feedbacks" inverse="true">
+			<key column="PATIENT_ID"/>
+			<one-to-many class="Feedback"/>
+		</set>
+
+		<set name="dailyRecords" inverse="true">
+			<key column="PATIENT_ID"/>
+			<one-to-many class="DailyRecord"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.ictti.hbc.business.entity">
+	<class
+		name="PatientReport"
+		table="patient_report"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="month"
+			type="integer"
+			column="MONTH"
+			length="2"
+		>
+			<generator class="identity"/>
+		</id>
+		 
+		<property
+			name="count"
+			column="COUNT"
+			type="long"
+			not-null="true"
+			length="21"
+		/>
+		
+		<property
+			name="year"
+			column="YEAR"
+			type="integer"
+			not-null="false"
+			length="5"
+		/>
+
+	</class>	
+</hibernate-mapping>

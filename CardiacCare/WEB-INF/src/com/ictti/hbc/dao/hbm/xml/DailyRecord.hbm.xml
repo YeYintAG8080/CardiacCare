@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.ictti.hbc.business.entity">
+	<class
+		name="DailyRecord"
+		table="daily_record"
+		lazy="false"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="DAILY_RECORD_ID"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="attemptDate"
+			column="ATTEMPT_DATE"
+			type="date"
+			not-null="true"
+			length="10"
+		/>
+		<property
+			name="bloodPressure"
+			column="BLOOD_PRESSURE"
+			type="string"
+			not-null="true"
+			length="45"
+		/>
+		<property
+			name="bodyTemperature"
+			column="BODY_TEMPERATURE"
+			type="string"
+			not-null="true"
+			length="10"
+		/>
+		<property
+			name="spo2Level"
+			column="SPO2_LEVEL"
+			type="string"
+			not-null="true"
+			length="45"
+		/>
+		<property
+			name="bloodTest"
+			column="BLOOD_TEST"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<property
+			name="echocardiography"
+			column="ECHOCARDIOGRAPHY"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<property
+			name="electrocardigraphy"
+			column="ELECTROCARDIGRAPHY"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<property
+			name="diabetes"
+			column="DIABETES"
+			type="string"
+			not-null="true"
+			length="10"
+		/>
+		<property
+			name="pulseRate"
+			column="PULSE_RATE"
+			type="string"
+			not-null="true"
+			length="45"
+		/>
+		<many-to-one
+			name="patient"
+			column="PATIENT_ID"
+			class="Patient"
+			not-null="true"
+		>
+		</many-to-one>
+	
+
+		<set name="treatments" inverse="true">
+			<key column="DAILY_RECORD_ID"/>
+			<one-to-many class="Treatment"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>
